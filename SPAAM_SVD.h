@@ -27,6 +27,7 @@ to use and modfiy the source code with proper citation where applicable
 #define __SPAAM_SVD__
 
 #include <vector>
+#include <cstring>
 
 ////////BOOST and LAPACK includes////////
 #include <boost/numeric/ublas/io.hpp>
@@ -129,7 +130,7 @@ class SPAAM_SVD
 			toScale.clear();
 			
 			////compute mean and mean of square////
-			for ( vector< Correspondence_Pair<W, S> >::const_iterator it( corr_points.begin() ); it < corr_points.end(); ++it )
+			for ( typename std::vector< Correspondence_Pair<W, S> >::const_iterator it( corr_points.begin() ); it < corr_points.end(); ++it )
 			{	
 				fromShift = fromShift + (*it).worldPoint;
 				fromScale = fromScale + boost::numeric::ublas::element_prod( (*it).worldPoint, (*it).worldPoint );
